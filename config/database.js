@@ -1,10 +1,10 @@
 'use strict'
 
-const database = process.env.DB_DATABASE || 'sandbox'
-const username = process.env.DB_USERNAME || 'sandbox'
-const password = process.env.DB_PASSWORD || 'sandbox'
-const host = process.env.DB_HOST || 'sandbox-mysql'
-const dialect = process.env.DB_CONNECTION || 'mysql'
+const database = process.env.DB_DATABASE
+const username = process.env.DB_USERNAME
+const password = process.env.DB_PASSWORD
+const host = process.env.DB_HOST
+const dialect = 'mysql'
 
 const config = {
   username,

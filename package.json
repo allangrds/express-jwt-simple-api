@@ -19,6 +19,7 @@
   "homepage": "https://github.com/allangrds/Express-JWT-Simple-API#readme",
   "dependencies": {
     "body-parser": "1.19.0",
+    "dotenv": "8.0.0",
     "express": "4.17.1",
     "mysql2": "1.6.5",
     "sequelize": "5.8.7"

@@ -9,6 +9,9 @@ kill:
 up:
 	@docker-compose up
 
+bash:
+	@docker exec -it sandbox-app /bin/ash
+
 migrate:
 	@docker exec -it sandbox-app cd /usr/app && npx sequelize db:migrate
 
