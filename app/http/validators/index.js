@@ -1,14 +1,14 @@
-const { celebrate} = require('celebrate')
+const { celebrate } = require('celebrate')
 
 function validator (rules) {
-    const obj = celebrate(rules,
-        {
-            abortEarly: false
-        }
-    )
+  const obj = celebrate(
+    rules,
+    {
+      abortEarly: false,
+    }
+  )
 
-    return obj
+  return obj
 }
-
 
 module.exports = validator

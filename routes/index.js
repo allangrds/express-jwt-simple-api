@@ -1,7 +1,6 @@
-'use strict'
 
 const { omit, pathOr } = require('ramda')
-const users            = require('./users')
+const users = require('./users')
 
 function route (app, db) {
   users(app, db)
@@ -13,7 +12,7 @@ function route (app, db) {
     if (errors.length > 0) {
       res.status(400).send({ errors })
     }
-  });
+  })
 }
 
 module.exports = route
