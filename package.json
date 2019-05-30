@@ -19,12 +19,17 @@
   "homepage": "https://github.com/allangrds/Express-JWT-Simple-API#readme",
   "dependencies": {
     "body-parser": "1.19.0",
+    "celebrate": "10.0.0",
     "dotenv": "8.0.0",
     "express": "4.17.1",
     "mysql2": "1.6.5",
+    "ramda": "0.26.1",
     "sequelize": "5.8.7"
   },
   "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-config-pagarme-base": "3.0.0",
+    "eslint-plugin-import": "2.17.3",
     "nodemon": "1.19.1",
     "sequelize-cli": "5.4.0"
   }
