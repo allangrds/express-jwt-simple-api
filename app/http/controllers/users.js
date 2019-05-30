@@ -2,9 +2,17 @@ const { User } = require('../../models')
 
 class Users {
     async index(req, res) {
-        // const user = await User.count()
+        //TODO ver se é possivel definiri campos vísiveis/invisíveis
+        const users = await User.findAll({
+          attributes: [
+            'id',
+            'email',
+            'createdAt',
+            'updatedAt',
+          ]
+        })
 
-        res.status(200).send('deu bom')
+        res.status(200).send({ users })
     }
 }
 

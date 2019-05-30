@@ -1,23 +1,26 @@
+const bcrypt = require('bcrypt-nodejs')
+
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
+  const User = sequelize.define('User', {
         name: DataTypes.STRING,
         email: DataTypes.STRING,
         password: DataTypes.STRING,
-    }, {
-        hooks: {
-            beforeCreate: function (user, options, fn) {
-                user.createdAt = new Date()
-                user.updatedAt = new Date()
+  }, {})
 
-                fn(null, user)
-            },
-            beforeUpdate: function (user, options, fn) {
-                user.updatedAt = new Date()
+  User.beforeCreate(async (user) => {
+    user.createdAt = new Date()
+    user.updatedAt = new Date()
+    user.password  = await user.generatePasswordHash()
+  })
 
-                fn(null, user)
-            }
-        }
-    })
+  User.beforeUpdate(user => {
+    user.updatedAt = new Date()
+  })
 
-    return User
+  User.prototype.generatePasswordHash = () => {
+    const saltRounds = 10
+    return bcrypt.hash(this.password, saltRounds)
+  }
+
+  return User
 }

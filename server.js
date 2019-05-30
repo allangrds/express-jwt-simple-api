@@ -1,6 +1,5 @@
 'use strict'
 
-require('dotenv').config()
 const bodyParser = require('body-parser')
 const express    = require('express')
 const router     = require('./routes')

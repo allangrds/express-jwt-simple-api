@@ -6,6 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
+    "migrate": "npx sequelize db:migrate",
+    "seed": "npx sequelize-cli db:seed:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/allangrds/Express-JWT-Simple-API#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.19.0",
     "celebrate": "10.0.0",
     "dotenv": "8.0.0",

@@ -1,11 +1,15 @@
 'use strict';
+const bcrypt = require('bcrypt-nodejs')
+const salt   = bcrypt.genSaltSync()
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
       name: 'Allan',
       email: 'allan@ramos.com',
-      password: 123456,
+      password: bcrypt.hashSync(123456, salt),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {})
   },
 
