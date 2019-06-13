@@ -4,6 +4,8 @@ const paginate = require('../../models/helpers')
 class Users {
   async index (req, res) {
     // TODO ver se é possivel definiri campos vísiveis/invisíveis
+    // TODO ver se dá pra reduzir paginação
+    // TODO ver se dá pra inserir o método "pagination" em algum lugar do sequelize
     const page = req.param('page') || 1
     const users = await User.findAll(paginate(
       {

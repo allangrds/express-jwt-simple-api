@@ -9,6 +9,7 @@ const HOST = '127.0.0.1'
 
 const app = express()
 
+app.disable('x-powered-by')
 app.use(bodyParser.json())
 app.listen(PORT, () => {
     console.log('We are live on ' + PORT)
