@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const timeout = require('connect-timeout')
 const router = require('./routes')
+require('./app/http/helpers/passport')
 
 const PORT = 3000
 
