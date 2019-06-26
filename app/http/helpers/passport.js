@@ -30,7 +30,7 @@ passport.use(new LocalStrategy(
         })
       })
       .catch((err) => {
-        cb(err)
+        return cb(err)
       })
   ))
 ))

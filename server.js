@@ -13,9 +13,25 @@ const app = express()
 app.disable('x-powered-by')
 app.use(bodyParser.json())
 
+// app.use(
+//   '/users',
+//   passport.authenticate('jwt', { session: false }),
+//   routes.users
+// )
+
 app.use(
   '/users',
-  passport.authenticate('jwt', { session: false }),
+  (req, res, next) => {
+    passport.authenticate('jwt', { session: false }, (err, user, info) => {
+      if (err || !user) {
+        return res.status(401).send({
+          error: 'Unauthorized',
+        })
+      }
+
+      next()
+    })(req, res, next)
+  },
   routes.users
 )
 
