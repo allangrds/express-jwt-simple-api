@@ -1,14 +1,12 @@
 const User = require('../repositories/User')
 
-class Users {
-  async index (req, res) {
-    const { page } = req.query
-    const users = await User.getAll(page)
+async function index (req, res) {
+  const { page } = req.query
+  const users = await User.getAll(page)
 
-    res.status(200).send({
-      ...users,
-    })
-  }
+  res.status(200).send({
+    ...users,
+  })
 }
 
-module.exports = Users
+module.exports = { index }
