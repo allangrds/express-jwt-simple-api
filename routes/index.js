@@ -1,3 +1,5 @@
+require('../app/http/helpers/passport')
+
 const validateToken = require('../app/http/helpers/auth')
 const users = require('./users')
 const auth = require('./auth')
