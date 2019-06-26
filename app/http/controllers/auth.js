@@ -2,22 +2,32 @@ const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
 class Auth {
-  async index (req, res) {
-    passport.authenticate('local', { session: false }, (err, user, info) => {
+  index (req, res) {
+    passport.authenticate('local', { session: false }, (err, user) => {
       if (err || !user) {
-        return res.status(400).json({
-          message: 'Something is not right',
-          user,
+        return res.status(401).send({
+          error: 'Unauthorized',
         })
       }
 
-      req.login(user, { session: false }, (err) => {
-        if (err) {
-          res.send(err)
+      return req.login(user, { session: false }, (error) => {
+        if (error) {
+          res.status(401).send({
+            error: 'Unauthorized',
+          })
         }
-        // generate a signed son web token with the contents of user object and return it in the response
+
         const token = jwt.sign(user, 'your_jwt_secret')
-        return res.json({ user, token })
+
+        return res.json({
+          user: {
+            name: user.name,
+            email: user.email,
+            created_at: user.createdAt,
+            updated_at: user.updatedAt,
+          },
+          token,
+        })
       })
     })(req, res)
   }

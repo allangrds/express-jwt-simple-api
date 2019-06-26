@@ -1,7 +1,8 @@
+require('./app/http/helpers/passport')
+
 const bodyParser = require('body-parser')
 const express = require('express')
 const router = require('./routes')
-require('./passport')
 
 const PORT = 3000
 
