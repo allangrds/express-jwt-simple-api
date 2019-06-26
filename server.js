@@ -3,8 +3,8 @@ require('./app/http/helpers/passport')
 const bodyParser = require('body-parser')
 const { omit, pathOr } = require('ramda')
 const express = require('express')
-const passport = require('passport')
 const routes = require('./routes')
+const validateToken = require('./app/http/helpers/auth')
 
 const PORT = 3000
 
@@ -13,25 +13,9 @@ const app = express()
 app.disable('x-powered-by')
 app.use(bodyParser.json())
 
-// app.use(
-//   '/users',
-//   passport.authenticate('jwt', { session: false }),
-//   routes.users
-// )
-
 app.use(
   '/users',
-  (req, res, next) => {
-    passport.authenticate('jwt', { session: false }, (err, user, info) => {
-      if (err || !user) {
-        return res.status(401).send({
-          error: 'Unauthorized',
-        })
-      }
-
-      next()
-    })(req, res, next)
-  },
+  (req, res, next) => validateToken(req, res, next),
   routes.users
 )
 
