@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt-nodejs')
+const bcrypt = require('bcryptjs')
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   User.prototype.generatePasswordHash = () => {
-    const saltRounds = 10
-    return bcrypt.hash(this.password, saltRounds)
+    const salt = bcrypt.genSaltSync(10)
+    return bcrypt.hash(this.password, salt)
   }
 
   return User
