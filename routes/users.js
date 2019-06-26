@@ -1,19 +1,9 @@
-
+const express = require('express')
 const Users = require('../app/http/controllers/users')
-const usersCreateValidator = require('../app/http/validators/users/create')
 
+const router = express.Router()
 const usersController = new Users()
 
-function users (app, db) {
-  // app.post(
-  //     '/users',
-  //     usersCreateValidator,
-  //     (req, res) => usersController.index(req, res)
-  // );
-  app.get(
-    '/users',
-    (req, res) => usersController.index(req, res)
-  )
-}
+router.get('/', (req, res) => usersController.index(req, res))
 
-module.exports = users
+module.exports = router

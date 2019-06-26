@@ -40,9 +40,11 @@ passport.use(new JWTStrategy(
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: 'your_jwt_secret',
   },
-  ((jwtPayload, cb) => (
-    User.findOneById(jwtPayload.id)
-      .then(user => cb(null, user))
-      .catch(err => cb(err))
-  ))
+  ((token, done) => {
+    try {
+      return done(null, {})
+    } catch (error) {
+      done(error)
+    }
+  })
 ))
