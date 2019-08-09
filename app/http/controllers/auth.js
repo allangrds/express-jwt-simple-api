@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
+require('dotenv').config()
 
 function index (req, res) {
   passport.authenticate('local', { session: false }, (err, userData) => {
@@ -23,7 +24,13 @@ function index (req, res) {
         updated_at: userData.updatedAt,
       }
 
-      const token = jwt.sign(user, 'your_jwt_secret')
+      const token = jwt.sign(
+        user,
+        process.env.TOKEN_SECRET,
+        {
+          expiresIn: process.env.TOKEN_LIFETIME,
+        }
+      )
 
       return res.json({
         user,

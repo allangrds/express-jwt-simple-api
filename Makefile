@@ -1,4 +1,4 @@
-start: down kill up migrate
+start: down kill up migrate seed
 
 down:
 	@docker-compose down
