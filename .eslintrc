@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["pagarme-base"],
+  "rules": {
+    "strict": 1,
+    "class-methods-use-this": 0
+  }
+}

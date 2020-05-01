@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: sandbox-app
+    command: npm start
+    restart: always
+    volumes:
+      - .:/usr/app/
+      # - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    container_name: sandbox-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=sandbox
+      - MYSQL_DATABASE=sandbox
+      - MYSQL_USER=sandbox
+      - MYSQL_PASSWORD=sandbox
+
+volumes:
+  node_modules:
