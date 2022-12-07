@@ -21,11 +21,11 @@
   "homepage": "https://github.com/allangrds/Express-JWT-Simple-API#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "1.19.0",
+    "body-parser": "1.20.1",
     "celebrate": "10.0.0",
     "cors": "^2.8.5",
     "dotenv": "8.0.0",
-    "express": "4.17.1",
+    "express": "4.18.2",
     "express-rate-limit": "^5.0.0",
     "jsonwebtoken": "8.5.1",
     "mysql2": "1.6.5",
